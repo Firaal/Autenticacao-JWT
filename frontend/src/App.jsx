@@ -1,6 +1,17 @@
-import { Outlet, Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 
 function App() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            navigate("/dashboard");
+        }
+    }, []);
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
             <nav className="flex gap-4 mb-4">
